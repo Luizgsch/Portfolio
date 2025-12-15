@@ -476,3 +476,497 @@ h2 {
   color: #b58d6f;
   line-height: 1.6;
 }
+
+/* ================= SERVIÇOS ================= */
+.services-section {
+  padding: 6rem 10%;
+  background-color: #1a1714;
+  position: relative;
+  z-index: 2;
+  /* Uma leve separação visual usando degradê sutil */
+  background: linear-gradient(to bottom, #1a1714, #201c19 50%, #1a1714);
+}
+
+.container-services {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  /* Cria colunas automáticas: Mínimo 300px, Máximo 1 fração da tela */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+/* Estilo do Cartão */
+.service-card {
+  background: rgba(34, 31, 27, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(125, 93, 69, 0.2);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: left;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Efeito Hover no Cartão */
+.service-card:hover {
+  transform: translateY(-10px); /* Sobe um pouco */
+  background: rgba(34, 31, 27, 0.8);
+  border-color: #D3A77C;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Destaque para o card do meio (opcional) */
+.service-card.featured {
+  border-color: rgba(211, 167, 124, 0.4);
+  background: rgba(42, 36, 30, 0.6);
+}
+
+/* Ícone */
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(211, 167, 124, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  background: rgba(211, 167, 124, 0.2);
+}
+
+.service-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Títulos e Textos */
+.service-card h3 {
+  font-family: 'Titillium Web', sans-serif;
+  color: #E6D5C3;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-desc {
+  color: #9c8c7f;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1; /* Empurra o botão para baixo para alinhar todos */
+}
+
+/* Lista de Features */
+.service-features {
+  list-style: none;
+  margin-bottom: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
+}
+
+.service-features li {
+  color: #b58d6f;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botão do Card */
+.service-btn {
+  display: block;
+  text-align: center;
+  padding: 12px 0;
+  border: 1px solid #D3A77C;
+  border-radius: 8px;
+  color: #D3A77C;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.service-btn:hover {
+  background: #D3A77C;
+  color: #1a1714;
+  box-shadow: 0 0 15px rgba(211, 167, 124, 0.4);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .services-section {
+    padding: 4rem 5%;
+  }
+  .services-grid {
+    grid-template-columns: 1fr; /* Um card por linha no celular */
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ================= PROJETOS ================= */
+.projects-section {
+  padding: 6rem 10%;
+  background-color: #1a1714; /* Continuidade do fundo */
+  position: relative;
+  z-index: 2;
+}
+
+.container-projects {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* --- CARD DO PROJETO --- */
+.project-card {
+  background: rgba(34, 31, 27, 0.4);
+  border: 1px solid rgba(125, 93, 69, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  group: hover;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: #D3A77C;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Imagem do Card */
+.project-thumb {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-thumb img {
+  transform: scale(1.05); /* Zoom suave na imagem */
+}
+
+/* Informações do Card */
+.project-info {
+  padding: 1.5rem;
+}
+
+.project-info h3 {
+  font-family: 'Titillium Web', sans-serif;
+  color: #E6D5C3;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Tags de Tecnologias */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-tags span {
+  font-size: 0.75rem;
+  background: rgba(211, 167, 124, 0.1);
+  color: #D3A77C;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(211, 167, 124, 0.2);
+}
+
+.click-hint {
+  font-size: 0.8rem;
+  color: #7D5D45;
+  text-align: right;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* ================= MODAL (Janela Flutuante) ================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85); /* Fundo escuro */
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: none; /* Escondido por padrão */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  background: #221f1b;
+  border: 1px solid #D3A77C;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(0,0,0,0.7);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+  transform: scale(1);
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #E6D5C3;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .modal-body {
+    flex-direction: row; /* Lado a lado no desktop */
+  }
+  .modal-img-container {
+    flex: 1;
+    max-width: 50%;
+  }
+  .modal-text {
+    flex: 1;
+  }
+}
+
+.modal-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 300px;
+}
+
+.modal-text {
+  padding: 2rem;
+  overflow-y: auto; /* Scroll se o texto for muito grande */
+  max-height: 80vh;
+}
+
+.modal-text h3 {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 2rem;
+  color: #D3A77C;
+  margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+  color: #9c8c7f;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-description h4 {
+  color: #E6D5C3;
+  margin-bottom: 0.5rem;
+}
+
+.modal-description p {
+  color: #b58d6f;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  text-align: center;
+  flex: 1;
+}
+
+.modal-btn.primary {
+  background: #D3A77C;
+  color: #1a1714;
+}
+
+.modal-btn.secondary {
+  border: 1px solid #D3A77C;
+  color: #D3A77C;
+}
+
+.modal-btn:hover {
+  opacity: 0.9;
+}
+
+/* ================= CONTATO ================= */
+.contact-section {
+  padding: 6rem 10% 2rem; /* Padding inferior menor por causa do footer */
+  background: #1a1714;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  border-top: 1px solid rgba(125, 93, 69, 0.1);
+}
+
+.container-contact {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-text {
+  color: #b58d6f;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Redes Sociais */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap; /* Para não quebrar em telas muito pequenas */
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(34, 31, 27, 0.6);
+  border: 1px solid rgba(125, 93, 69, 0.3);
+  border-radius: 50%;
+  color: #E6D5C3;
+  transition: all 0.3s ease;
+}
+
+.social-links svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor; /* Pega a cor do texto do pai */
+}
+
+/* Efeito Hover nos Ícones */
+.social-links a:hover {
+  background: #D3A77C;
+  color: #1a1714;
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(211, 167, 124, 0.4);
+  border-color: #D3A77C;
+}
+
+/* Botão CV */
+.cv-container {
+  margin-bottom: 5rem;
+}
+
+.cv-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background: transparent;
+  color: #D3A77C;
+  border: 2px solid #D3A77C;
+  border-radius: 50px;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cv-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #D3A77C;
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+
+.cv-btn:hover {
+  color: #1a1714;
+  box-shadow: 0 0 30px rgba(211, 167, 124, 0.3);
+}
+
+.cv-btn:hover::before {
+  width: 100%;
+}
+
+/* Footer Simples */
+footer p {
+  font-size: 0.8rem;
+  color: #6d5c52;
+  margin-top: 2rem;
+}
+
+/* Responsivo */
+@media (max-width: 500px) {
+  .social-links {
+    gap: 1rem;
+  }
+  .social-links a {
+    width: 50px;
+    height: 50px;
+  }
+}
