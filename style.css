@@ -1,0 +1,478 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Corrige offset do header fixo ao navegar por âncoras */
+section,
+main {
+  scroll-margin-top: 120px; /* ajuste fino conforme altura real do header */
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1f1c1a;
+  color: #E6D5C3;
+  overflow-x: hidden;
+  
+  /* NOVO: Fundo com padrão sutil de pontos (Dot pattern) */
+  background-image: radial-gradient(#3a2a21 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* ================= HEADER ================= */
+header {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 20px; -> Removido para o header ficar colado no topo */
+  padding-top: 20px; /* Adiciona o respiro */
+  padding-bottom: 20px;
+  position: fixed; 
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  
+  /* NOVO: Transição para a cor de fundo ao rolar */
+  transition: background-color 0.4s ease, border-color 0.4s ease, padding 0.3s ease;
+}
+
+/* Classe adicionada por JS quando o usuário rola */
+header.scrolled {
+  background-color: rgba(31, 28, 26, 0.95); /* Fundo quase sólido */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.container {
+  background: transparent; /* NOVO: Move a transparência para o header, container fica transparente por padrão */
+  backdrop-filter: blur(10px); 
+  border: 1px solid #8B6A4E;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 725px; /* Aumentei um pouco para caber mais links sem apertar */
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  /* NOVO: Sombra sutil no container do header */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* Navegação */
+.main-nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #E6D5C3;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+/* NOVO: Efeito de sublinhado animado */
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #b58d6f;
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #b58d6f;
+}
+
+.main-nav a:hover::after {
+  width: 100%;
+}
+
+
+/* Menu Toggle (Mobile) - Mantido */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #E6D5C3;
+}
+
+/* Responsivo do Menu - Mantido */
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #2A1E16;
+    border-radius: 0 0 12px 12px;
+    padding: 1rem;
+    border: 1px solid #8B6A4E;
+  }
+
+  .main-nav.active {
+    display: block;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10%; 
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  pointer-events: none; 
+}
+
+/* Canvas do Three.js */
+#bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+h1 {
+  font-size: clamp(40px, 8vw, 100px); 
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #E6D5C3;
+  margin-bottom: 1rem;
+  /* NOVO: Sombra de texto mais suave e profunda */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5); 
+}
+
+h2 {
+  font-size: clamp(18px, 4vw, 30px);
+  font-family: 'Titillium Web', sans-serif;
+  color: #b58d6f;
+  font-weight: 300;
+  min-height: 40px; 
+}
+
+/* ================= BOTÃO CTA (Exemplo de elemento bonito) ================= */
+.cta-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 30px;
+  background-color: #b58d6f;
+  color: #1f1c1a;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 6px 20px rgba(181, 141, 111, 0.4);
+  transition: all 0.3s ease;
+  pointer-events: all; /* Precisa ser clicável */
+  border: 1px solid #b58d6f;
+}
+
+.cta-button:hover {
+  background-color: #1f1c1a;
+  color: #b58d6f;
+  box-shadow: 0 0 30px rgba(181, 141, 111, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ================= SECTION SKILLS (RODA) ================= */
+.skills-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* NOVO: Degradê mais suave e profundo */
+  background: linear-gradient(to bottom, #1f1c1a, #2a1d16 50%, #1f1c1a); 
+  overflow: hidden;
+  padding: 8rem 0; /* Mais padding para respiro */
+}
+
+.skills-title {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem; 
+  color: #E6D5C3;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* Container Maior da Roda */
+.tech-wheel-container {
+  position: relative;
+  width: 650px;
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* NOVO: Sombra na roda inteira */
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+/* Guia circular (SVG) */
+.tech-wheel-guide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: spin-slow 120s linear infinite; 
+  pointer-events: none;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- CAIXA DE INFORMAÇÃO CENTRAL (NOVO) --- */
+.center-info {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  /* NOVO: Fundo mais sutil e elegante */
+  background: radial-gradient(circle, rgba(42, 30, 22, 0.9) 0%, rgba(42, 30, 22, 0.5) 70%, transparent 100%);
+  border: 1px solid rgba(139, 106, 78, 0.5); /* Borda suave */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+  pointer-events: none; 
+  padding: 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.center-info h3 {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 2rem;
+  color: #E6D5C3;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-shadow: 0 0 5px rgba(0,0,0,0.8);
+  transition: transform 0.3s ease;
+}
+
+.center-info p {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  color: #b58d6f;
+  line-height: 1.5;
+  max-width: 280px;
+  transition: opacity 0.3s ease;
+}
+
+/* A Roda */
+.tech-wheel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Item da Roda (A bolinha) */
+.tech-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  --total: 11; 
+  --radius: 260px;
+  --angle: calc(360deg / var(--total) * var(--i));
+
+  transform: translate(-50%, -50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle)));
+  
+  width: 100px; 
+  height: 100px;
+  
+  background: #2a1d16;
+  border: 1px solid #8c6a52;
+  border-radius: 50%;
+  
+  display: grid;
+  place-items: center;
+  
+  cursor: pointer;
+  /* Sombra mais suave */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  z-index: 10;
+  overflow: hidden; 
+}
+
+/* Configuração da Imagem (Logo) */
+.tech-item img {
+  width: 60%; 
+  height: 60%;
+  object-fit: contain; 
+  display: block;
+  pointer-events: none; 
+  transition: transform 0.3s ease;
+  filter: sepia(100%) hue-rotate(320deg) contrast(0.8); 
+}
+
+/* Efeito Hover */
+.tech-item:hover {
+  background: #E6D5C3;
+  border-color: #fff;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translate(var(--radius)) rotate(calc(-1 * var(--angle))) scale(1.15);
+  /* Brilho no hover */
+  box-shadow: 0 0 15px #b58d6f, 0 0 30px rgba(230, 213, 195, 0.4); 
+}
+
+.tech-item:hover img {
+  transform: scale(1.1);
+  filter: none; 
+}
+
+/* Responsivo da Roda */
+@media (max-width: 768px) {
+  .tech-wheel-container {
+    width: 350px; 
+    height: 350px;
+  }
+  
+  .tech-wheel-guide {
+     display: none; 
+  }
+
+  .center-info {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .center-info h3 { font-size: 1.2rem; }
+  .center-info p { font-size: 0.8rem; display: none; } 
+
+  .tech-item {
+    --radius: 140px; 
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* ================= SOFT SKILLS ================= */
+.soft-skills-section {
+  padding: 6rem 10%;
+  background-color: #1a1714; /* Mantém o fundo contínuo */
+  position: relative;
+  z-index: 2;
+}
+
+.container-soft {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.soft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.soft-card {
+  background: rgba(34, 31, 27, 0.4); /* Vidro escuro */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(125, 93, 69, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: left;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Detalhe estético no topo do card */
+.soft-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #D3A77C, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.soft-card:hover {
+  transform: translateY(-5px);
+  background: rgba(34, 31, 27, 0.7);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-color: #D3A77C;
+}
+
+.soft-card:hover::before {
+  transform: scaleX(1);
+}
+
+.soft-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(211, 167, 124, 0.3));
+}
+
+.soft-card h3 {
+  font-family: 'Titillium Web', sans-serif;
+  color: #E6D5C3;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.soft-card p {
+  font-size: 0.95rem;
+  color: #b58d6f;
+  line-height: 1.6;
+}

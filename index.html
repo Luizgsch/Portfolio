@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio – Luiz Gustavo Schreiner</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+     <button class="menu-toggle" aria-label="Abrir Menu">☰</button>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#skills">Tecnologias</a></li>
+          <li><a href="#soft-skills">Soft-Skills</a></li>
+          <li><a href="#">Serviços contratáveis</a></li>
+          <li><a href="#">Projetos</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="hero" class="hero">
+    <canvas id="bg"></canvas>
+
+    <div class="hero-content">
+      <h1>Olá, eu sou o<br>Luiz Gustavo!</h1>
+      <h2>
+        <span id="typed"></span>
+      </h2>
+      
+      <a href="#contato" class="cta-button">Vamos Conversar!</a>
+      
+    </div>
+  </main>
+
+<section id="skills" class="skills-section">
+  <h2 class="skills-title">Minhas Tecnologias</h2>
+  
+  <div class="tech-wheel-container">
+    
+    <svg class="tech-wheel-guide" viewBox="0 0 600 600">
+      <circle cx="300" cy="300" r="250" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="5 5" opacity="0.3"/>
+    </svg>
+
+    <div class="center-info">
+      <h3 id="tech-name">Tecnologias</h3>
+      <p id="tech-desc">Passe o mouse sobre os ícones para ver os detalhes.</p>
+    </div>
+
+    <div class="tech-wheel">
+      
+      <div class="tech-item" style="--i: 0;" 
+           data-name="HTML5" 
+           data-desc="Linguagem de marcação para estruturação de páginas web semânticas e acessíveis.">
+        <img src="html.png" alt="HTML">
+      </div>
+
+      <div class="tech-item" style="--i: 1;" 
+           data-name="CSS3" 
+           data-desc="Estilização avançada, animações, Flexbox e Grid Layout para designs responsivos.">
+        <img src="css.png" alt="CSS">
+      </div>
+
+      <div class="tech-item" style="--i: 2;" 
+           data-name="JavaScript" 
+           data-desc="Desenvolvimento de interatividade, manipulação de scripts e lógica front-end moderna.">
+        <img src="javascript.png" alt="JavaScript">
+      </div>
+
+      <div class="tech-item" style="--i: 3;" 
+           data-name="Photoshop" 
+           data-desc="Edição de imagens, criação de layouts e tratamento visual para web.">
+        <img src="photoshop.png" alt="Photoshop">
+      </div>
+
+      <div class="tech-item" style="--i: 4;" 
+           data-name="Java" 
+           data-desc="Linguagem robusta orientada a objetos para desenvolvimento backend e aplicações enterprise.">
+        <img src="java.png" alt="Java">
+      </div>
+
+      <div class="tech-item" style="--i: 5;" 
+           data-name="Spring Boot" 
+           data-desc="Framework Java para criação rápida de microsserviços e APIs RESTful.">
+        <img src="springboot.png" alt="Spring">
+      </div>
+
+      <div class="tech-item" style="--i: 6;" 
+           data-name="Python" 
+           data-desc="Automação, análise de dados e desenvolvimento backend com sintaxe clara e eficiente.">
+        <img src="python.png" alt="Python">
+      </div>
+
+      <div class="tech-item" style="--i: 7;" 
+           data-name="Git / GitHub" 
+           data-desc="Controle de versão distribuído e colaboração em projetos de software.">
+        <img src="github.png" alt="Git">
+      </div>
+
+      <div class="tech-item" style="--i: 8;" 
+           data-name="Inteligência Artificial" 
+           data-desc="Utilizo para autoaprimoramento, estudo e refatoração de código.">
+        <img src="chatgpt.png" alt="IA">
+      </div>
+        <div class="tech-item" style="--i: 9;" 
+           data-name="Scrum/Kanban" 
+           data-desc="Metodologias ágeis para ajudar na comunicação com a equipe">
+        <img src="kanban.png" alt="kanban">
+      </div>
+
+      <div class="tech-item" style="--i: 10;" 
+           data-name="React" 
+           data-desc="Biblioteca JS para facilitar a criação de interfaces de usuário (UI) de forma eficiente e flexível">
+        <img src="react.png" alt="kanban">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="soft-skills" class="soft-skills-section">
+  <div class="container-soft">
+    <h2 class="skills-title">Soft-Skills</h2>
+    
+    <div class="soft-grid">
+      <div class="soft-card">
+        <div class="icon">💡</div> <h3>Resolução de Problemas</h3>
+        <p>Foco em identificar a raiz da questão, não apenas tratar os sintomas. Abordagem analítica para bugs complexos.</p>
+      </div>
+
+      <div class="soft-card">
+        <div class="icon">🤝</div>
+        <h3>Comunicação Clara</h3>
+        <p>Capacidade de traduzir termos técnicos complexos para linguagem de negócios, facilitando a decisão de stakeholders.</p>
+      </div>
+
+      <div class="soft-card">
+        <div class="icon">🔄</div>
+        <h3>Adaptabilidade</h3>
+        <p>Aprendizado ágil de novas stacks e metodologias conforme a necessidade do projeto, não tenho medo de fazer perguntas.</p>
+      </div>
+      
+      <div class="soft-card">
+        <div class="icon">🧠</div>
+        <h3>Pensamento Crítico</h3>
+        <p>Não aceito requisitos cegamente. Questiono o "porquê" para garantir que a solução entregue valor real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <script>
+    // 1. Menu Mobile Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+
+    // 2. Three.js Cube, Typed.js - MANTIDOS
+    // (Scripts existentes para Typed.js e Three.js aqui)
+
+    // 3. NOVO: Efeito de Header Sólido no Scroll
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) { // Adiciona a classe após 50px de scroll
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // 4. Typed.js
+    document.addEventListener("DOMContentLoaded", function () {
+      new Typed("#typed", {
+        strings: [
+          "Transformando ideias em soluções inovadoras.",
+          "Criando experiências digitais focadas no usuário.",
+          "Desenvolvendo interfaces funcionais e intuitivas."
+        ],
+        typeSpeed: 40,
+        backSpeed: 20,
+        backDelay: 2000,
+        loop: true
+      });
+    });
+
+    // 5. Three.js Cube
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.querySelector('#bg'),
+      alpha: true, 
+      antialias: true
+    });
+
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const geometry = new THREE.BoxGeometry(2.5, 2.5, 2.5); 
+    const material = new THREE.MeshPhysicalMaterial({
+      color: 0x382822,
+      roughness: 0.2,
+      metalness: 0.6,
+      transmission: 0.6, 
+      thickness: 1,
+      clearcoat: 1,
+      opacity: 1,
+      transparent: true
+    });
+
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xffffff, 1);
+    pointLight.position.set(10, 10, 10);
+    scene.add(pointLight);
+
+    function updateCubePosition() {
+      if (window.innerWidth < 768) {
+        cube.position.set(0, 0, -2);
+        camera.position.z = 6;
+      } else {
+        cube.position.set(3, 0, -1);
+        camera.position.z = 5;
+      }
+    }
+    
+    updateCubePosition();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.003;
+      cube.rotation.y += 0.005;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      updateCubePosition();
+    });
+    
+    // 6. Script para interação da Roda de Tecnologias
+    const techItems = document.querySelectorAll('.tech-item');
+    const techNameDisplay = document.getElementById('tech-name');
+    const techDescDisplay = document.getElementById('tech-desc');
+    
+    const defaultTitle = "Tecnologias";
+    const defaultDesc = "Passe o mouse sobre os ícones para ver os detalhes.";
+
+    techItems.forEach(item => {
+      
+      item.addEventListener('mouseenter', () => {
+        const name = item.getAttribute('data-name');
+        const desc = item.getAttribute('data-desc');
+
+        techNameDisplay.style.opacity = 0;
+        techDescDisplay.style.opacity = 0;
+
+        setTimeout(() => {
+          techNameDisplay.innerText = name;
+          techDescDisplay.innerText = desc;
+          techNameDisplay.style.color = "#E6D5C3"; 
+          
+          techNameDisplay.style.opacity = 1;
+          techDescDisplay.style.opacity = 1;
+        }, 200);
+      });
+
+      item.addEventListener('mouseleave', () => {
+        techNameDisplay.style.opacity = 0;
+        techDescDisplay.style.opacity = 0;
+
+        setTimeout(() => {
+          techNameDisplay.innerText = defaultTitle;
+          techDescDisplay.innerText = defaultDesc;
+          techNameDisplay.style.color = "#E6D5C3"; 
+
+          techNameDisplay.style.opacity = 1;
+          techDescDisplay.style.opacity = 1;
+        }, 200);
+      });
+
+    });
+  </script>
+
+</body>
+</html>
