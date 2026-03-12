@@ -1,0 +1,353 @@
+/* ========================================================================= 
+   SEÇÃO PROJETOS - CSS DO CARROSSEL 3D IMERSIVO
+   ========================================================================= */
+
+.projetos-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* Ocupa a tela cheia conforme instruído */
+  overflow: hidden;
+  background-color: #0D0D0D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -------------------------------------------------------------------------
+   4. CAMADA DE FUNDO (Background Layer) 
+   ------------------------------------------------------------------------- */
+.projetos-backgrounds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Div que ocupa 100% da tela */
+.projeto-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+
+  /* Transição suave de opacidade. Quando o projeto muda, 
+     a imagem antiga some e a nova aparece suavemente por trás. */
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 5s ease-out;
+  /* Bônus: um leve zoom sutil */
+  transform: scale(1.05);
+}
+
+.projeto-bg.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.projetos-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 13, 13, 0.75);
+  /* Escurece bastante para destacar o centro */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------------------
+   LAYOUT NOVO: CONTAINER PRINCIPAL (Cards + Botões) no Canto Inferior Direito
+   ------------------------------------------------------------------------- */
+.projetos-content-wrapper {
+  position: absolute;
+  bottom: 0px;
+  right: 2%;
+  /* Joga um pouco para o canto inferior direito */
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  /* Alinha os botões verticalmente com os cards */
+  gap: 2rem;
+  /* Espaço entre o carrossel e os botões */
+  padding-bottom: 50px;
+  /* Distância do fundo */
+  width: 100%;
+  justify-content: flex-end;
+  /* Garante que os itens fiquem na direita */
+  pointer-events: none;
+  /* Deixa flutuar, mas a gente restringe eventos aos filhos */
+}
+
+/* -------------------------------------------------------------------------
+   4. CAMADA DE CARDS (Container)
+   ------------------------------------------------------------------------- */
+.projetos-cards-container {
+  /* position: relative para o 3D funcionar nos filhos absolutos */
+  position: relative;
+  width: 500px;
+  /* Largura total da área dos cards */
+  height: 380px;
+  /* Altura da área de perspectiva */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  pointer-events: auto;
+  /* Reativa cliques nesta área */
+}
+
+/* O card genérico base */
+.projeto-card {
+  position: absolute;
+  /* Reduced size */
+  width: 180px;
+  height: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  /* Transições super suaves (springy) para tamanho, posição e brilho */
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.8s ease,
+    box-shadow 0.8s ease;
+  cursor: pointer;
+  transform-origin: center center;
+  /* Efeito de vidro sutil no fundo do card antes da imagem */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.projeto-card-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: filter 0.8s ease, transform 0.8s ease;
+}
+
+/* --- Card Ativo --- */
+.projeto-card.active {
+  transform: scale(1.2) translateX(0) translateZ(0);
+  z-index: 10;
+  opacity: 1;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(255, 255, 255, 0.15);
+}
+
+.projeto-card.active .projeto-card-image {
+  filter: blur(0px) brightness(1.1);
+  transform: scale(1);
+}
+
+/* --- Cards Inativos --- */
+.projeto-card.inactive {
+  opacity: 0.6;
+  z-index: 5;
+}
+
+.projeto-card.inactive .projeto-card-image {
+  filter: blur(4px) brightness(0.5) grayscale(30%);
+}
+
+/* Posição do Card Anterior (Esquerda) */
+.projeto-card.prev {
+  /* Ajustado translateX para o novo tamanho do card */
+  transform: scale(0.8) translateX(-130%) translateZ(-100px) rotateY(15deg);
+}
+
+/* Posição do Próximo Card (Direita) */
+.projeto-card.next {
+  /* Ajustado translateX para o novo tamanho do card */
+  transform: scale(0.8) translateX(130%) translateZ(-100px) rotateY(-15deg);
+}
+
+/* Cards Distantes (Ocultos) */
+.projeto-card.hidden {
+  transform: scale(0.6) translateX(0) translateZ(-300px);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Efeito Hover nos cards inativos */
+.projeto-card.inactive:hover {
+  opacity: 0.8;
+  transform: scale(0.85) translateX(-130%) translateZ(-80px) rotateY(10deg);
+}
+
+.projeto-card.next.inactive:hover {
+  transform: scale(0.85) translateX(130%) translateZ(-80px) rotateY(-10deg);
+}
+
+.projeto-card.inactive:hover .projeto-card-image {
+  filter: blur(2px) brightness(0.8);
+}
+
+
+/* -------------------------------------------------------------------------
+   4. CAMADA DE INTERFACE (UI Layer e Botões)
+   ------------------------------------------------------------------------- */
+/* Title moved to center/left of the page instead of floating over cards */
+.projetos-ui-layer {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 45%; /* Slightly larger width to accommodate more content */
+  pointer-events: none;
+}
+
+.projetos-category {
+  display: inline-block;
+  color: #00e5ff; /* Cyan accent color for the category */
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+.projetos-title {
+  color: #ffffff;
+  font-size: 4.5rem; /* Slightly larger */
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  line-height: 1;
+}
+
+.projetos-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.01em;
+}
+
+.projetos-description {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  max-width: 550px;
+  text-align: left;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2.5rem;
+}
+
+.projetos-action-btn {
+  pointer-events: auto;
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 1.2rem 2.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.projetos-action-btn:hover {
+  background: #00e5ff;
+  color: #000000;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 229, 255, 0.3);
+}
+
+.projetos-action-btn:active {
+  transform: translateY(-2px);
+}
+
+/* Container de botões (Prev / Next) posicionado ao lado do carrossel */
+.projetos-nav-buttons {
+  display: flex;
+  gap: 15px;
+  pointer-events: auto;
+  /* Reativa cliques na área dos botões */
+  margin-right: 5%;
+  /* Adiciona um espaço da borda direita da tela */
+}
+
+.projetos-btn-nav {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* Circle shape instead of pill */
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.projetos-btn-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.projetos-btn-nav:active {
+  transform: translateY(0);
+}
+
+/* RESPONSIVIDADE PARA MOBILE */
+@media (max-width: 1024px) {
+  .projetos-content-wrapper {
+    flex-direction: column;
+    /* Stacks the cards and buttons on small screens */
+    align-items: center;
+    justify-content: center;
+    right: 0;
+  }
+
+  .projetos-ui-layer {
+    top: 20%;
+    left: 5%;
+    width: 90%;
+  }
+
+  .projetos-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .projeto-card {
+    width: 140px;
+    height: 220px;
+  }
+
+  .projetos-cards-container {
+    width: 100%;
+  }
+
+  .projeto-card.prev {
+    transform: scale(0.7) translateX(-110%) translateZ(-50px);
+  }
+
+  .projeto-card.next {
+    transform: scale(0.7) translateX(110%) translateZ(-50px);
+  }
+}

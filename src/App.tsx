@@ -1,5 +1,6 @@
-import { Header } from './components/Header';
+import { Header } from './components/layout/Header';
 import { Hero } from './sections/Hero';
+import { Projetos } from './sections/Projetos';
 import './styles/global.css';
 
 function App() {
@@ -8,11 +9,7 @@ function App() {
       <Header />
       <Hero />
       
-      {/* Seção de Projetos Placeholder */}
-      <section id="works" style={{ height: '100vh', padding: '100px 8%', backgroundColor: '#0D0D0D' }}>
-        <h2 style={{ fontSize: '3rem', color: '#fff' }}>Selected Works</h2>
-        <p style={{ color: '#808080', marginTop: '20px' }}>Coming soon...</p>
-      </section>
+      <Projetos />
 
       {/* Seção de Contato Placeholder */}
       <section id="contact" style={{ height: '50vh', padding: '100px 8%', backgroundColor: '#0D0D0D' }}>
