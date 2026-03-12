@@ -1,18 +1,18 @@
-import { useRef, useMemo } from 'react';
+import { useMemo } from 'react';
 import { motion, useSpring, useMotionValue, useTransform, useAnimationFrame } from 'framer-motion';
-import './styles.css';
+import '../styles.css';
 
 // Configurações do grid para um visual mais "espalhado" e orgânico
 const GRID_SIZE_X = 22; 
 const GRID_SIZE_Y = 12;
 const DOT_SPACING = 35; // Aumentado para espalhar mais as bolinhas
 
-export const ParticleGrid = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Valores do mouse relativos ao centro
-  const mouseX = useMotionValue(-5000); 
-  const mouseY = useMotionValue(-5000);
+interface ParticleGridProps {
+  sectionMouseX: any;
+  sectionMouseY: any;
+}
+
+export const ParticleGrid = ({ sectionMouseX, sectionMouseY }: ParticleGridProps) => {
   const time = useMotionValue(0);
 
   // Animação contínua para o efeito de "respiração"
@@ -22,24 +22,8 @@ export const ParticleGrid = () => {
 
   // Configuração de mola mais reativa e precisa (menos delay)
   const springConfig = { damping: 40, stiffness: 400 };
-  const smoothMouseX = useSpring(mouseX, springConfig);
-  const smoothMouseY = useSpring(mouseY, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    mouseX.set(e.clientX - rect.left - centerX);
-    mouseY.set(e.clientY - rect.top - centerY);
-  };
-
-  const handleMouseLeave = () => {
-    // Em vez de pular, movemos o "destino" para longe suavemente
-    mouseX.set(-3000);
-    mouseY.set(-3000);
-  };
+  const smoothMouseX = useSpring(sectionMouseX, springConfig);
+  const smoothMouseY = useSpring(sectionMouseY, springConfig);
 
   // Gerar partículas com "jitter" (desvio aleatório) para não parecer um grid quadrado
   const particles = useMemo(() => {
@@ -66,12 +50,7 @@ export const ParticleGrid = () => {
   }, []);
 
   return (
-    <div 
-      ref={containerRef}
-      className="particle-grid-container"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="particle-grid-container">
       <div className="particle-grid-wrapper">
         {particles.map((p) => (
           <Particle 
@@ -108,7 +87,7 @@ const Particle = ({ x, y, baseScale, baseOpacity, mouseX, mouseY, time }: Partic
   });
 
   // Onda interativa mais profunda e suave
-  const mouseWaveY = useTransform(distance, [0, 150, 300], [-50, -10, 0]);
+  const mouseWaveY = useTransform(distance, [0, 300, 600], [-50, -10, 0], { clamp: true });
   
   // Onda orgânica (respiração)
   const organicWaveY = useTransform(time, (t: number) => {
@@ -118,8 +97,8 @@ const Particle = ({ x, y, baseScale, baseOpacity, mouseX, mouseY, time }: Partic
   const translateY = useTransform([mouseWaveY, organicWaveY], ([mw, ow]: any[]) => mw + ow);
   
   // Escala e opacidade reagem à distância de forma mais orgânica
-  const scale = useTransform(distance, [0, 150, 300], [baseScale * 2.5, baseScale, baseScale * 0.8]);
-  const opacity = useTransform(distance, [0, 150, 300], [0.8, baseOpacity * 1.5, baseOpacity]);
+  const scale = useTransform(distance, [0, 300, 600], [baseScale * 2.5, baseScale, baseScale * 0.8], { clamp: true });
+  const opacity = useTransform(distance, [0, 300, 600], [0.8, baseOpacity * 1.5, baseOpacity], { clamp: true });
 
   return (
     <motion.div
