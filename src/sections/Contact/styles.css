@@ -1,0 +1,216 @@
+.contact-section {
+  padding: 120px 8% 60px;
+  background-color: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-label {
+  display: block;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.contact-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  margin-bottom: 5rem;
+}
+
+.contact-title span {
+  color: var(--color-text-secondary);
+}
+
+.contact-main {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-bottom: 100px;
+}
+
+.contact-hint {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.contact-email-link {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  letter-spacing: -0.02em;
+  transition: color 0.4s ease;
+}
+
+.contact-email-link:hover {
+  color: var(--color-accent);
+}
+
+.link-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.contact-email-link:hover .link-underline {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.contact-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 40px;
+}
+
+.contact-detail-value {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-detail-value:hover {
+  color: var(--color-text-secondary);
+}
+
+.social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.social-link-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: color 0.3s ease;
+}
+
+.social-link-item:hover .social-icon {
+  color: var(--color-text-primary);
+}
+
+.social-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: color 0.3s ease;
+}
+
+.social-link-item:hover .social-name {
+  color: var(--color-text-primary);
+}
+
+.contact-footer {
+  margin-top: 50px;
+}
+
+.footer-line {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+.contact-bg-glow {
+  position: absolute;
+  bottom: -10%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .contact-details-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 8% 40px;
+  }
+
+  .contact-title {
+    margin-bottom: 3rem;
+  }
+
+  .contact-main {
+    gap: 60px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .social-links-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-links-grid {
+    grid-template-columns: 1fr;
+  }
+}

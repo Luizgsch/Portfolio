@@ -2,6 +2,7 @@ import { Header } from './components/layout/Header';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
 import { Projetos } from './sections/Projetos';
+import { Contact } from './sections/Contact';
 import './styles/global.css';
 
 function App() {
@@ -11,12 +12,7 @@ function App() {
       <Hero />
       <About />
       <Projetos />
-
-      {/* Seção de Contato Placeholder */}
-      <section id="contact" style={{ height: '50vh', padding: '100px 8%', backgroundColor: '#0D0D0D' }}>
-        <h2 style={{ fontSize: '3rem', color: '#fff' }}>Get in touch</h2>
-        <p style={{ color: '#808080', marginTop: '20px' }}>hello@luiz.dev</p>
-      </section>
+      <Contact />
     </div>
   );
 }
