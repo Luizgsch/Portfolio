@@ -1,5 +1,6 @@
 import { Header } from './components/layout/Header';
 import { Hero } from './sections/Hero';
+import { About } from './sections/About';
 import { Projetos } from './sections/Projetos';
 import './styles/global.css';
 
@@ -8,7 +9,7 @@ function App() {
     <div className="app-root">
       <Header />
       <Hero />
-      
+      <About />
       <Projetos />
 
       {/* Seção de Contato Placeholder */}
