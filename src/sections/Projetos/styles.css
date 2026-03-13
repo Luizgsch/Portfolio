@@ -1,12 +1,11 @@
 /* ========================================================================= 
-   SEÇÃO PROJETOS - CSS DO CARROSSEL 3D IMERSIVO
+   SEÇÃO PROJETOS - CSS DO CARROSSEL 3D IMERSIVO E MOBILE RESPONSIVO
    ========================================================================= */
 
 .projetos-section {
   position: relative;
   width: 100%;
   height: 100vh;
-  /* Ocupa a tela cheia conforme instruído */
   overflow: hidden;
   background-color: #0D0D0D;
   display: flex;
@@ -14,9 +13,7 @@
   justify-content: center;
 }
 
-/* -------------------------------------------------------------------------
-   4. CAMADA DE FUNDO (Background Layer) 
-   ------------------------------------------------------------------------- */
+/* 4. CAMADA DE FUNDO (Background Layer) */
 .projetos-backgrounds {
   position: absolute;
   top: 0;
@@ -26,7 +23,6 @@
   z-index: 0;
 }
 
-/* Div que ocupa 100% da tela */
 .projeto-bg {
   position: absolute;
   top: 0;
@@ -35,12 +31,8 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-
-  /* Transição suave de opacidade. Quando o projeto muda, 
-     a imagem antiga some e a nova aparece suavemente por trás. */
   opacity: 0;
   transition: opacity 1s ease-in-out, transform 5s ease-out;
-  /* Bônus: um leve zoom sutil */
   transform: scale(1.05);
 }
 
@@ -56,68 +48,49 @@
   width: 100%;
   height: 100%;
   background: radial-gradient(circle at center, rgba(13, 13, 13, 0.6) 0%, rgba(13, 13, 13, 0.9) 100%);
-  /* Adicionando gradientes de topo e base para transição entre seções */
   box-shadow: inset 0 150px 150px -150px #0D0D0D, inset 0 -150px 150px -150px #0D0D0D;
   z-index: 1;
   pointer-events: none;
 }
 
-/* -------------------------------------------------------------------------
-   LAYOUT NOVO: CONTAINER PRINCIPAL (Cards + Botões) no Canto Inferior Direito
-   ------------------------------------------------------------------------- */
+/* CONTAINER PRINCIPAL (Cards + Botões) */
 .projetos-content-wrapper {
   position: absolute;
   bottom: 0px;
   right: 2%;
-  /* Joga um pouco para o canto inferior direito */
   z-index: 5;
   display: flex;
   align-items: center;
-  /* Alinha os botões verticalmente com os cards */
   gap: 2rem;
-  /* Espaço entre o carrossel e os botões */
   padding-bottom: 50px;
-  /* Distância do fundo */
   width: 100%;
   justify-content: flex-end;
-  /* Garante que os itens fiquem na direita */
   pointer-events: none;
-  /* Deixa flutuar, mas a gente restringe eventos aos filhos */
 }
 
-/* -------------------------------------------------------------------------
-   4. CAMADA DE CARDS (Container)
-   ------------------------------------------------------------------------- */
+/* CAMADA DE CARDS (Container) */
 .projetos-cards-container {
-  /* position: relative para o 3D funcionar nos filhos absolutos */
   position: relative;
   width: 500px;
-  /* Largura total da área dos cards */
   height: 380px;
-  /* Altura da área de perspectiva */
   display: flex;
   align-items: center;
   justify-content: center;
   perspective: 1200px;
   pointer-events: auto;
-  /* Reativa cliques nesta área */
 }
 
-/* O card genérico base */
 .projeto-card {
   position: absolute;
-  /* Reduced size */
   width: 180px;
   height: 280px;
   border-radius: 20px;
   overflow: hidden;
-  /* Transições super suaves (springy) para tamanho, posição e brilho */
   transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
     opacity 0.8s ease,
     box-shadow 0.8s ease;
   cursor: pointer;
   transform-origin: center center;
-  /* Efeito de vidro sutil no fundo do card antes da imagem */
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
 }
@@ -130,7 +103,14 @@
   transition: filter 0.8s ease, transform 0.8s ease;
 }
 
-/* --- Card Ativo --- */
+/* Informações internas do card (visíveis apenas no Mobile) */
+.projeto-card-info {
+  display: none;
+  padding: 30px;
+  flex: 1;
+  background: #0D0D0D;
+}
+
 .projeto-card.active {
   transform: scale(1.2) translateX(0) translateZ(0);
   z-index: 10;
@@ -145,7 +125,6 @@
   transform: scale(1);
 }
 
-/* --- Cards Inativos --- */
 .projeto-card.inactive {
   opacity: 0.6;
   z-index: 5;
@@ -155,19 +134,14 @@
   filter: blur(4px) brightness(0.5) grayscale(30%);
 }
 
-/* Posição do Card Anterior (Esquerda) */
 .projeto-card.prev {
-  /* Ajustado translateX para o novo tamanho do card */
   transform: scale(0.8) translateX(-130%) translateZ(-100px) rotateY(15deg);
 }
 
-/* Posição do Próximo Card (Direita) */
 .projeto-card.next {
-  /* Ajustado translateX para o novo tamanho do card */
   transform: scale(0.8) translateX(130%) translateZ(-100px) rotateY(-15deg);
 }
 
-/* Cards Distantes (Ocultos) */
 .projeto-card.hidden {
   transform: scale(0.6) translateX(0) translateZ(-300px);
   opacity: 0;
@@ -175,7 +149,6 @@
   pointer-events: none;
 }
 
-/* Efeito Hover nos cards inativos */
 .projeto-card.inactive:hover {
   opacity: 0.8;
   transform: scale(0.85) translateX(-130%) translateZ(-80px) rotateY(10deg);
@@ -189,24 +162,20 @@
   filter: blur(2px) brightness(0.8);
 }
 
-
-/* -------------------------------------------------------------------------
-   4. CAMADA DE INTERFACE (UI Layer e Botões)
-   ------------------------------------------------------------------------- */
-/* Title moved to center/left of the page instead of floating over cards */
+/* CAMADA DE INTERFACE */
 .projetos-ui-layer {
   position: absolute;
   top: 50%;
   left: 8%;
   transform: translateY(-50%);
   z-index: 3;
-  width: 45%; /* Slightly larger width to accommodate more content */
+  width: 45%;
   pointer-events: none;
 }
 
 .projetos-category {
   display: inline-block;
-  color: #00e5ff; /* Cyan accent color for the category */
+  color: #00e5ff;
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -217,7 +186,7 @@
 
 .projetos-title {
   color: #ffffff;
-  font-size: 4.5rem; /* Slightly larger */
+  font-size: 4.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
   letter-spacing: -0.03em;
@@ -269,86 +238,139 @@
   box-shadow: 0 15px 40px rgba(0, 229, 255, 0.3);
 }
 
-.projetos-action-btn:active {
-  transform: translateY(-2px);
-}
-
-/* Container de botões (Prev / Next) posicionado ao lado do carrossel */
 .projetos-nav-buttons {
   display: flex;
   gap: 15px;
   pointer-events: auto;
-  /* Reativa cliques na área dos botões */
   margin-right: 5%;
-  /* Adiciona um espaço da borda direita da tela */
 }
 
 .projetos-btn-nav {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #ffffff;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  /* Circle shape instead of pill */
   font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.projetos-btn-nav:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.3);
-}
+/* ========================================================================= 
+   ESTRATÉGIA MOBILE: TRANSFORMAÇÃO EM LISTA VERTICAL/GRID
+   ========================================================================= */
 
-.projetos-btn-nav:active {
-  transform: translateY(0);
-}
-
-/* RESPONSIVIDADE PARA MOBILE */
 @media (max-width: 1024px) {
+  .projetos-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 5%;
+    display: block;
+    overflow: visible;
+  }
+
+  .projetos-backgrounds {
+    display: none;
+  }
+
   .projetos-content-wrapper {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 100%;
+    display: flex;
     flex-direction: column;
-    /* Stacks the cards and buttons on small screens */
-    align-items: center;
+    gap: 40px;
+    padding-bottom: 0;
     justify-content: center;
-    right: 0;
-  }
-
-  .projetos-ui-layer {
-    top: 20%;
-    left: 5%;
-    width: 90%;
-  }
-
-  .projetos-title {
-    font-size: 3rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .projeto-card {
-    width: 140px;
-    height: 220px;
+    pointer-events: auto;
   }
 
   .projetos-cards-container {
     width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 80px;
+    perspective: none;
+    pointer-events: auto;
   }
 
-  .projeto-card.prev {
-    transform: scale(0.7) translateX(-110%) translateZ(-50px);
+  .projeto-card {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transform: none !important;
+    opacity: 1 !important;
+    box-shadow: none;
+    cursor: default;
+    border-radius: 12px;
   }
 
-  .projeto-card.next {
-    transform: scale(0.7) translateX(110%) translateZ(-50px);
+  .projeto-card-image {
+    width: 100%;
+    height: 250px;
+    filter: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Mostrar info interna no mobile */
+  .projeto-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .projeto-card-info .projetos-category {
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .projeto-card-info .projetos-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.2rem;
+    text-shadow: none;
+  }
+
+  .projeto-card-info .projetos-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-shadow: none;
+  }
+
+  .projeto-card-info .projetos-description {
+    font-size: 1rem;
+    text-shadow: none;
+    opacity: 0.8;
+  }
+
+  .projeto-card-info .projetos-action-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .projetos-ui-layer {
+    display: none;
+  }
+
+  .projetos-nav-buttons {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .projetos-section {
+    padding: 80px 4%;
   }
 }

@@ -49,8 +49,8 @@ export const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p className="contact-hint">E-mail</p>
-            <a href="mailto:Luizgsch1@gmail.com" className="contact-email-link">
-              Luizgsch1@gmail.com
+            <a href="mailto:luigsch1@gmail.com" className="contact-email-link">
+              luigsch1@gmail.com
               <span className="link-underline" />
             </a>
           </motion.div>
@@ -64,7 +64,7 @@ export const Contact = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <p className="contact-hint">Telefone</p>
-              <a href="tel:+5541995801701" className="contact-detail-value">+55 41 99580-1701</a>
+              <span className="contact-detail-value">+55 41 99580-1701</span>
             </motion.div>
 
             <motion.div 

@@ -155,6 +155,23 @@ export const Projetos = () => {
                   className="projeto-card-image"
                   style={{ backgroundImage: `url(${projeto.cardImage})` }}
                 />
+                
+                {/* Informações internas para Mobile (visível apenas via CSS media query) */}
+                <div className="projeto-card-info">
+                  <span className="projetos-category">{projeto.category}</span>
+                  <h2 className="projetos-title">{projeto.title}</h2>
+                  <h3 className="projetos-subtitle">{projeto.subtitle}</h3>
+                  <p className="projetos-description">{projeto.description}</p>
+                  <button 
+                    className="projetos-action-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleAction(projeto);
+                    }}
+                  >
+                    {projeto.buttonText}
+                  </button>
+                </div>
               </div>
             );
           })}
