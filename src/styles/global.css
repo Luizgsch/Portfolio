@@ -1,15 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-
 :root {
-  /* Paleta de Cores Minimalista */
-  --color-bg: #0D0D0D;
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #808080;
-  --color-accent: #A6A6A6;
-  
-  /* Espaçamento e Outros */
-  --container-padding: 0 8%;
-  --header-height: 100px;
+  /* ==========================================================================
+     MEDIDAS E ESTRUTURA GLOBAL
+     ========================================================================== */
+
+  /* Estão aqui como fallback, mas são controladas dinamicamente via JS */
+  --bg-primary:      #0b0f12;
+  --bg-secondary:    #12181d;
+  --bg-card:         #1b2329;
+  --border-color:    #2a333a;
+  --color-primary:   #c08457;
+  --color-secondary: #e2b49a;
+  --text-primary:    #f9fafb;
+  --text-secondary:  #9ca3af;
+
+  --header-height:   100px;
 }
 
 * {
@@ -23,24 +27,50 @@ html {
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-h1, h2, h3 {
-  font-weight: 800;
+h1 {
+  font-size: 48px;
+  font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-secondary);
 }
 
 ul {
@@ -52,4 +82,73 @@ button {
   border: none;
   background: none;
   font-family: inherit;
+}
+
+section {
+  padding: 80px 20px;
+}
+
+/* Premium Utility Classes */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 30px rgba(114, 75, 57, 0.2);
+}
+
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.button-primary:hover {
+  background: var(--color-secondary);
+  box-shadow: 0 0 15px var(--color-secondary);
+  color: white;
+}
+
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.button-secondary:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.highlight {
+  color: var(--color-secondary);
+  text-shadow: 0 0 10px rgba(207, 157, 123, 0.3);
+}
+
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
 }

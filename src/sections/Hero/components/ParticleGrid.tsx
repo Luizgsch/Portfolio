@@ -3,7 +3,7 @@ import { motion, useSpring, useMotionValue, useTransform, useAnimationFrame } fr
 import '../styles.css';
 
 // Configurações do grid para um visual mais "espalhado" e orgânico
-const GRID_SIZE_X = 22; 
+const GRID_SIZE_X = 22;
 const GRID_SIZE_Y = 12;
 const DOT_SPACING = 35; // Aumentado para espalhar mais as bolinhas
 
@@ -30,19 +30,19 @@ export const ParticleGrid = ({ sectionMouseX, sectionMouseY }: ParticleGridProps
     const list = [];
     const totalWidth = (GRID_SIZE_X - 1) * DOT_SPACING;
     const totalHeight = (GRID_SIZE_Y - 1) * DOT_SPACING;
-    
+
     for (let i = 0; i < GRID_SIZE_X; i++) {
       for (let j = 0; j < GRID_SIZE_Y; j++) {
         // Adiciona um pequeno desvio aleatório para quebrar a rigidez do grid
         const jitterX = (Math.random() - 0.5) * 15;
         const jitterY = (Math.random() - 0.5) * 15;
-        
-        list.push({ 
-          id: `${i}-${j}`, 
-          x: i * DOT_SPACING - totalWidth / 2 + jitterX, 
+
+        list.push({
+          id: `${i}-${j}`,
+          x: i * DOT_SPACING - totalWidth / 2 + jitterX,
           y: j * DOT_SPACING - totalHeight / 2 + jitterY,
-          baseScale: 0.6 + Math.random() * 0.4, // Escala inicial variada
-          baseOpacity: 0.1 + Math.random() * 0.2 // Opacidade inicial variada
+          baseScale: 0.8 + Math.random() * 0.4, // Escala inicial aumentada
+          baseOpacity: 0.3 + Math.random() * 0.3 // Opacidade inicial aumentada
         });
       }
     }
@@ -53,13 +53,13 @@ export const ParticleGrid = ({ sectionMouseX, sectionMouseY }: ParticleGridProps
     <div className="particle-grid-container">
       <div className="particle-grid-wrapper">
         {particles.map((p) => (
-          <Particle 
-            key={p.id} 
-            x={p.x} 
-            y={p.y} 
+          <Particle
+            key={p.id}
+            x={p.x}
+            y={p.y}
             baseScale={p.baseScale}
             baseOpacity={p.baseOpacity}
-            mouseX={smoothMouseX} 
+            mouseX={smoothMouseX}
             mouseY={smoothMouseY}
             time={time}
           />
@@ -88,17 +88,17 @@ const Particle = ({ x, y, baseScale, baseOpacity, mouseX, mouseY, time }: Partic
 
   // Onda interativa mais profunda e suave
   const mouseWaveY = useTransform(distance, [0, 300, 600], [-50, -10, 0], { clamp: true });
-  
+
   // Onda orgânica (respiração)
   const organicWaveY = useTransform(time, (t: number) => {
     return Math.sin(t + (x + y) * 0.015) * 10;
   });
 
   const translateY = useTransform([mouseWaveY, organicWaveY], ([mw, ow]: any[]) => mw + ow);
-  
+
   // Escala e opacidade reagem à distância de forma mais orgânica
-  const scale = useTransform(distance, [0, 300, 600], [baseScale * 2.5, baseScale, baseScale * 0.8], { clamp: true });
-  const opacity = useTransform(distance, [0, 300, 600], [0.8, baseOpacity * 1.5, baseOpacity], { clamp: true });
+  const scale = useTransform(distance, [0, 300, 600], [baseScale * 2.5, baseScale * 1.2, baseScale], { clamp: true });
+  const opacity = useTransform(distance, [0, 300, 600], [0.9, baseOpacity * 1.8, 0.3], { clamp: true });
 
   return (
     <motion.div
@@ -113,6 +113,3 @@ const Particle = ({ x, y, baseScale, baseOpacity, mouseX, mouseY, time }: Partic
     />
   );
 };
-
-
-

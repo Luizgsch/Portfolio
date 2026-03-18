@@ -1,14 +1,24 @@
 import { motion } from 'framer-motion';
 import './styles.css';
+import react from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/react.png';
+import typescript from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/typescript.png';
+import java from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/java.png';
+import sql from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/sql.png';
+import springboot from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/springboot.png';
+import docker from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/docker.png';
+import git from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/git.png';
+import kanbam from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/kanbam.png';
 
 export const About = () => {
-  const skills = [
-    { name: 'Java', level: 90 },
-    { name: 'Spring Boot', level: 85 },
-    { name: 'React', level: 80 },
-    { name: 'TypeScript', level: 75 },
-    { name: 'Docker', level: 70 },
-    { name: 'SQL', level: 85 },
+  const bentoSkills = [
+    { name: 'React', desc: 'Criação de interfaces dinâmicas, componentes altamente reutilizáveis e gerenciamento de estados.', img: react, type: 'large' },
+    { name: 'TypeScript', img: typescript, type: 'medium' },
+    { name: 'SQL', img: sql, type: 'small' },
+    { name: 'Spring Boot', desc: 'Construção de APIs seguras e escaláveis utilizando arquitetura limpa.', img: springboot, type: 'large' },
+    { name: 'Docker', img: docker, type: 'small' },
+    { name: 'Git', img: git, type: 'small' },
+    { name: 'Kanbam', img: kanbam, type: 'small' },
+    { name: 'Java', img: java, type: 'medium' }
   ];
 
   const highlights = [
@@ -19,7 +29,7 @@ export const About = () => {
   ];
 
   return (
-    <section className="about-section" id="about">
+    <section className="about-section bg-secondary" id="about">
       <div className="about-container">
         <motion.div
           className="about-content"
@@ -28,13 +38,13 @@ export const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <span className="about-label">SOBRE MIM</span>
-          <h2 className="about-title">
-            Transformando complexidade em <br /> <span>soluções elegantes.</span>
-          </h2>
-
           <div className="about-grid">
             <div className="about-text-column">
+              <span className="about-label">SOBRE MIM</span>
+              <h2 className="about-title">
+                Transformando complexidade em <br /> <span>soluções elegantes.</span>
+              </h2>
+
               <p className="about-description">
                 Sou um desenvolvedor apaixonado por construir sistemas robustos e escaláveis.
                 Minha jornada começou na robótica competitiva, onde aprendi a importância da
@@ -64,23 +74,26 @@ export const About = () => {
 
             <div className="about-skills-column">
               <h3 className="skills-subtitle">Hard Skills</h3>
-              <div className="skills-grid">
-                {skills.map((skill) => (
-                  <div key={skill.name} className="skill-card">
-                    <div className="skill-info">
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percentage">{skill.level}%</span>
+
+              <div className="bento-grid">
+                {bentoSkills.map((skill, index) => (
+                  <motion.div
+                    key={skill.name}
+                    className={`bento-card card ${skill.type}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <div className="bento-icon-wrapper">
+                      <img src={skill.img} alt={skill.name} className="bento-icon" />
                     </div>
-                    <div className="skill-bar-bg">
-                      <motion.div
-                        className="skill-bar-fill"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
-                      />
+
+                    <div className="bento-content">
+                      <span className="bento-name">{skill.name}</span>
+                      {skill.desc && <p className="bento-desc">{skill.desc}</p>}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 

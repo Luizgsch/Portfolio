@@ -1,8 +1,9 @@
-import { Header } from './components/layout/Header';
+import { Header } from './sections/Header';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
 import { Projetos } from './sections/Projetos';
 import { Contact } from './sections/Contact';
+import { PaletteSwitcher } from './components/common/PaletteSwitcher';
 import './styles/global.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <About />
       <Projetos />
       <Contact />
+      <PaletteSwitcher />
     </div>
   );
 }

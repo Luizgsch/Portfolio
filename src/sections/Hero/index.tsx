@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useMotionValue } from 'framer-motion';
 import { Button } from '../../components/common/Button';
 import { ParticleGrid } from './components/ParticleGrid';
@@ -12,50 +12,54 @@ export const Hero = () => {
   const mouseX = useMotionValue(-5000);
   const mouseY = useMotionValue(-5000);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!visualRef.current) return;
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (!visualRef.current) return;
 
-    // Pegamos o retângulo do container do visual (lado direito)
-    const rect = visualRef.current.getBoundingClientRect();
+      const rect = visualRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
 
-    // O centro do grid é o centro desse retângulo
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
+      mouseX.set(e.clientX - centerX);
+      mouseY.set(e.clientY - centerY);
+    };
 
-    // O valor do mouse agora é a distância do ponteiro até o centro exato do grid
-    mouseX.set(e.clientX - centerX);
-    mouseY.set(e.clientY - centerY);
-  };
+    const handleGlobalMouseLeave = () => {
+      mouseX.set(-5000);
+      mouseY.set(-5000);
+    };
 
-  const handleMouseLeave = () => {
-    mouseX.set(-5000);
-    mouseY.set(-5000);
-  };
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+    window.addEventListener('mouseleave', handleGlobalMouseLeave);
+
+    return () => {
+      window.removeEventListener('mousemove', handleGlobalMouseMove);
+      window.removeEventListener('mouseleave', handleGlobalMouseLeave);
+    };
+  }, [mouseX, mouseY]);
 
   return (
     <section
       ref={heroRef}
       className="hero-section"
       id="home"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
     >
       <div className="hero-container-split">
         {/* Lado Esquerdo: Conteúdo de Texto */}
         <div className="hero-text">
           <p className="hero-detail">DESENVOLVEDOR FULLSTACK — JAVA</p>
           <h1 className="hero-title">
-            Trazendo performace <br /> e qualidade <br /> para o seu software.
+            Construindo aplicações <br /> <span className="highlight">escaláveis</span> e <br /> bem estruturadas.
           </h1>
           <div className="hero-actions">
-            <Button 
-              label="Ver Projetos" 
-              onClick={() => document.getElementById('works')?.scrollIntoView({ behavior: 'smooth' })} 
+            <Button
+              label="Ver Projetos"
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
             />
-            <Button 
-              label="Fale Comigo" 
-              variant="outline" 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
+            <Button
+              label="Contato"
+              variant="secondary"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             />
           </div>
         </div>

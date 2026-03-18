@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import './styles.css';
+import curriculo from '../../assets/Curriculo.pdf';
 
 export const Contact = () => {
   const socialLinks = [
@@ -27,9 +28,9 @@ export const Contact = () => {
   ];
 
   return (
-    <section className="contact-section" id="contact">
+    <section className="contact-section bg-secondary" id="contact">
       <div className="contact-container">
-        <motion.div 
+        <motion.div
           className="contact-header"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +42,7 @@ export const Contact = () => {
         </motion.div>
 
         <div className="contact-main">
-          <motion.div 
+          <motion.div
             className="contact-email-wrapper"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -49,14 +50,32 @@ export const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p className="contact-hint">E-mail</p>
-            <a href="mailto:luigsch1@gmail.com" className="contact-email-link">
-              luigsch1@gmail.com
+            <a href="mailto:luizgsch1@gmail.com" className="contact-email-link">
+              luizgsch1@gmail.com
               <span className="link-underline" />
             </a>
           </motion.div>
 
           <div className="contact-details-grid">
-            <motion.div 
+            <motion.div
+              className="contact-detail-item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <p className="contact-hint">Currículo</p>
+              <a href={curriculo} download="Luiz_Schreiner_Curriculo.pdf" className="contact-detail-value contact-download-link">
+                Baixar PDF
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="download-icon">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </a>
+            </motion.div>
+
+            <motion.div
               className="contact-detail-item"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +86,7 @@ export const Contact = () => {
               <span className="contact-detail-value">+55 41 99580-1701</span>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="social-links-container"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -77,10 +96,10 @@ export const Contact = () => {
               <p className="contact-hint">Social</p>
               <div className="social-links-grid">
                 {socialLinks.map((link) => (
-                  <a 
-                    key={link.name} 
-                    href={link.url} 
-                    target="_blank" 
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="social-link-item"
                     aria-label={link.name}
@@ -94,7 +113,7 @@ export const Contact = () => {
           </div>
         </div>
 
-        <motion.footer 
+        <motion.footer
           className="contact-footer"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

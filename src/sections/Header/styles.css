@@ -1,0 +1,140 @@
+/* Container principal do cabeçalho */
+.main-header {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  position: fixed;
+  /* Mantém o header fixo no topo ao rolar a página */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.7);
+  /* Fundo escuro semi-transparente */
+  backdrop-filter: blur(10px);
+  /* Efeito de vidro desfocado (glassmorphism) */
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Estilização da Logo */
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  z-index: 1001;
+  /* Garante que a logo fique acima do overlay do menu mobile */
+}
+
+/* Container da lista de links */
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+/* Estilo dos links de navegação */
+.nav-links a {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+/* Efeito de hover nos links */
+.nav-links a:hover {
+  color: var(--color-secondary);
+}
+
+/* Botão Hambúrguer (Mobile) - Escondido por padrão no desktop */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+/* Barras individuais do hambúrguer */
+.bar {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-primary);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Transformações para criar o ícone de 'X' quando o menu está aberto */
+.hamburger-btn.open .bar1 {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-btn.open .bar2 {
+  opacity: 0;
+  /* Esconde a barra do meio */
+}
+
+.hamburger-btn.open .bar3 {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Overlay do Menu Mobile (Tela cheia) */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.mobile-nav {
+  text-align: center;
+}
+
+/* Links dentro do menu mobile */
+.mobile-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mobile-links a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.mobile-links a:hover {
+  color: var(--color-secondary);
+}
+
+/* Regras de Responsividade (Breakpoint em 768px) */
+@media (max-width: 768px) {
+
+  /* Esconde a navegação horizontal padrão */
+  .desktop-nav {
+    display: none;
+  }
+
+  /* Mostra o botão hambúrguer */
+  .hamburger-btn {
+    display: flex;
+  }
+}

@@ -1,14 +1,12 @@
 .hero-section {
   height: 100vh;
-  padding: var(--container-padding);
+  padding: 0 5%;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
-  /* Fundo escuro profundo com gradiente sutil no topo para sofisticação */
-  background: radial-gradient(circle at 50% -10%, #1A1A1A 0%, #0D0D0D 100%);
+  background: var(--bg-primary);
 }
-
 
 .hero-container-split {
   display: flex;
@@ -44,49 +42,34 @@
   justify-content: center;
   cursor: crosshair;
   position: relative;
-  /* Adicionado para posicionamento absoluto dos pontos */
 }
 
 /* Wrapper centralizado para os pontos */
 .particle-grid-wrapper {
   position: absolute;
-  /* Posicionamento absoluto em relação ao container */
   top: 50%;
-  /* Alinha o topo do wrapper ao centro vertical do container */
   left: 50%;
-  /* Alinha a esquerda do wrapper ao centro horizontal do container */
   transform: translate(-50%, -50%);
-  /* Ajusta o wrapper para que seu próprio centro fique no centro do container */
   width: 1px;
-  /* Os pontos usam x/y relativos ao centro */
   height: 1px;
 }
-
 
 /* Ponto do Grid */
 .grid-dot {
   position: absolute;
-  /* Posicionamento absoluto dentro do wrapper */
   width: 3px;
-  /* Levemente menores para elegância */
   height: 3px;
-  background-color: var(--color-text-primary);
+  background-color: var(--color-secondary);
   border-radius: 50%;
-  /* Efeito de brilho suave (glow) */
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px var(--color-secondary);
   transform: translate(-50%, -50%);
-  /* Centraliza o ponto na sua coordenada X/Y */
   will-change: transform, opacity;
-  /* Otimização para animações de transform e opacity */
 }
-
-
-
 
 .hero-detail {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-text-secondary);
+  color: var(--color-primary);
   letter-spacing: 0.25em;
   margin-bottom: 2rem;
   text-transform: uppercase;
@@ -95,8 +78,8 @@
 .hero-title {
   font-size: 5.5rem;
   margin-bottom: 3.5rem;
-  color: var(--color-text-primary);
-  line-height: 0.95;
+  color: var(--text-primary);
+  line-height: 1;
   letter-spacing: -0.04em;
 }
 
