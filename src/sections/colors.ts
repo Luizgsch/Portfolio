@@ -47,7 +47,7 @@ export const palettes: Palette[] = [
     name: 'Soft Minimal',
     colors: {
       '--bg-primary': '#f8fafc',
-      '--bg-secondary': '#b6b6b6ff',
+      '--bg-secondary': '#969494ff',
       '--bg-card': '#6d6d6dff',
       '--color-primary': '#1e293b',
       '--color-secondary': '#64748b',
