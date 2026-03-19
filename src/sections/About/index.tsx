@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
 import './styles.css';
-import react from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/react.png';
-import typescript from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/typescript.png';
-import java from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/java.png';
-import sql from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/sql.png';
-import springboot from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/springboot.png';
-import docker from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/docker.png';
-import git from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/git.png';
-import kanbam from '/home/luiz/Documentos/Portifolio/meu-portfolio/src/assets/kanbam.png';
+import react from '/home/luiz/Documentos/Portfolio/src/assets/react.png';
+import typescript from '/home/luiz/Documentos/Portfolio/src/assets/typescript.png';
+import java from '/home/luiz/Documentos/Portfolio/src/assets/java.png';
+import sql from '/home/luiz/Documentos/Portfolio/src/assets/sql.png';
+import springboot from '/home/luiz/Documentos/Portfolio/src/assets/springboot.png';
+import docker from '/home/luiz/Documentos/Portfolio/src/assets/docker.png';
+import git from '/home/luiz/Documentos/Portfolio/src/assets/git.png';
+import kanbam from '/home/luiz/Documentos/Portfolio/src/assets/kanbam.png';
 
 export const About = () => {
   const bentoSkills = [
