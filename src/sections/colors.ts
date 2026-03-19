@@ -44,13 +44,13 @@ export const palettes: Palette[] = [
   },
   {
     id: 'minimal',
-    name: 'Soft Minimal',
+    name: 'White Minimal',
     colors: {
       '--bg-primary': '#f8fafc',
       '--bg-secondary': '#969494ff',
       '--bg-card': '#6d6d6dff',
       '--color-primary': '#1e293b',
-      '--color-secondary': '#64748b',
+      '--color-secondary': '#8a98acff',
       '--text-primary': '#0f172a',
       '--text-secondary': '#000000ff',
       '--border-color': '#e2e8f0',

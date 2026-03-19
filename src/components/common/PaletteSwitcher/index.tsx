@@ -15,8 +15,11 @@ export const PaletteSwitcher: React.FC = () => {
       const found = palettes.find((p: Palette) => p.name === savedPaletteName);
       if (found) {
         applyPalette(found);
+        return;
       }
     }
+    // Aplica a paleta padrão se não houver nada salvo
+    applyPalette(palettes[0]);
   }, []);
 
   const applyPalette = (palette: Palette) => {
@@ -34,7 +37,7 @@ export const PaletteSwitcher: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         title="Trocar Cores"
       >
-        <IoColorPaletteOutline size={28} color="white" />
+        <IoColorPaletteOutline size={28} color="var(--text-primary)" />
       </button>
 
       <AnimatePresence>
