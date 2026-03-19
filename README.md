@@ -1,74 +1,100 @@
-# React + TypeScript + Vite
+# 💼 Portfólio Profissional - Luiz Schreiner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o código do meu portfólio pessoal, desenvolvido para apresentar meus projetos, habilidades e experiência como desenvolvedor fullstack.
 
-Currently, two official plugins are available:
+🔗 Acesse o site: https://luizgsch.github.io/Portfolio/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Sobre o projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Portfólio web responsivo desenvolvido com foco em **performance, usabilidade e apresentação profissional**.
 
-## Expanding the ESLint configuration
+O objetivo é demonstrar minhas habilidades técnicas através de uma interface moderna e interativa, além de centralizar meus principais projetos e formas de contato.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tecnologias utilizadas
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* **Frontend:** HTML5, CSS3, JavaScript
+* **Build Tool:** Vite
+* **Deploy:** GitHub Pages
+* **Versionamento:** Git
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## ⚙️ Funcionalidades
+
+* Apresentação profissional (Hero section)
+* Seção de projetos com destaque
+* Layout responsivo para diferentes dispositivos
+* Animações e interações dinâmicas
+* Navegação fluida entre seções
+
+---
+
+## 📸 Preview
+
+*(adicione aqui um print do seu site — isso aumenta MUITO o impacto visual)*
+
+---
+
+## 📂 Estrutura do projeto
+
+```bash
+src/
+ ├── assets/
+ ├── components/
+ ├── styles/
+ └── main.js
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ▶️ Como rodar o projeto localmente
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Clonar o repositório
+git clone https://github.com/Luizgsch/Portifolio.git
+
+# Entrar na pasta
+cd Portifolio
+
+# Instalar dependências
+npm install
+
+# Rodar o projeto
+npm run dev
 ```
-# Meu-Portifolio
+
+---
+
+## 📦 Build para produção
+
+```bash
+npm run build
+```
+
+---
+
+## 🌐 Deploy
+
+O projeto é publicado utilizando **GitHub Pages**.
+
+```bash
+npm run deploy
+```
+
+---
+
+## 📫 Contato
+
+* Email: [Luizgsch1@gmail.com](mailto:Luizgsch1@gmail.com)
+* LinkedIn: https://linkedin.com/in/luizschreiner
+* GitHub: https://github.com/Luizgsch
+
+---
+
+## 📌 Observações
+
+Este portfólio está em constante evolução, com melhorias contínuas na interface, performance e inclusão de novos projetos.
