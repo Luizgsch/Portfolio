@@ -8,7 +8,7 @@ Este repositório contém o código do meu portfólio pessoal, desenvolvido para
 
 ## 🚀 Sobre o projeto
 
-Portfólio web responsivo desenvolvido com foco em **performance, usabilidade e apresentação profissional**.
+Portfólio web responsivo desenvolvido com foco em **performance, responsividade e apresentação profissional**.
 
 O objetivo é demonstrar minhas habilidades técnicas através de uma interface moderna e interativa, além de centralizar meus principais projetos e formas de contato.
 
