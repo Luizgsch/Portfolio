@@ -3,6 +3,7 @@ import jornada from '../../assets/jornada.png';
 import obr from '../../assets/obr.png';
 import swagger1 from '../../assets/swagger1.png';
 import jornadaPdf from '../../assets/jornada1.pdf';
+import manuais from '../../assets/Manuais.png';
 
 const projetosData = [
   {
@@ -34,20 +35,33 @@ const projetosData = [
     image: jornada,
     actionType: 'download',
     link: jornadaPdf
+  },
+  {
+    id: 3,
+    category: "Solução Corporativa",
+    title: "Sistema Command Center",
+    description: "Software para Command Center que digitaliza processos de RH. Rastreamento de vagas e candidatos, gestão de manuais e uniformes, com gráficos e dashboards visando a organização empresarial.",
+    buttonText: "Acessar Sistema",
+    image: manuais,
+    actionType: 'link',
+    link: 'https://luizgsch.github.io/Sistema_Jornada/',
+    buttonText2: "Ver no GitHub",
+    actionType2: 'link',
+    link2: 'https://github.com/Luizgsch/Sistema_Jornada'
   }
 ];
 
 export const Projetos = () => {
-  const handleAction = (projeto: typeof projetosData[0]) => {
-    if (projeto.actionType === 'link') {
-      window.open(projeto.link, '_blank', 'noopener,noreferrer');
-    } else if (projeto.actionType === 'download') {
-      const link = document.createElement('a');
-      link.href = projeto.link;
-      link.download = 'projeto_tecnico.pdf';
-      link.click();
-    } else if (projeto.actionType === 'scroll') {
-      document.getElementById(projeto.link)?.scrollIntoView({ behavior: 'smooth' });
+  const handleAction = (type: string, link: string) => {
+    if (type === 'link') {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    } else if (type === 'download') {
+      const aElem = document.createElement('a');
+      aElem.href = link;
+      aElem.download = 'projeto_tecnico.pdf';
+      aElem.click();
+    } else if (type === 'scroll') {
+      document.getElementById(link)?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -71,12 +85,22 @@ export const Projetos = () => {
                 <h3 className="project-title">{projeto.title}</h3>
                 <p className="project-description">{projeto.description}</p>
                 
-                <button 
-                  className="button-primary"
-                  onClick={() => handleAction(projeto)}
-                >
-                  {projeto.buttonText}
-                </button>
+                <div className="project-actions">
+                  <button 
+                    className="button-primary"
+                    onClick={() => handleAction(projeto.actionType, projeto.link)}
+                  >
+                    {projeto.buttonText}
+                  </button>
+                  {projeto.buttonText2 && (
+                    <button 
+                      className="button-secondary"
+                      onClick={() => handleAction(projeto.actionType2, projeto.link2)}
+                    >
+                      {projeto.buttonText2}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           ))}

@@ -101,9 +101,16 @@
   flex-grow: 1;
 }
 
-.project-card .button-primary {
-  width: 100%;
+.project-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 8px;
+}
+
+.project-actions .button-primary,
+.project-actions .button-secondary {
+  width: 100%;
 }
 
 @media (max-width: 768px) {
