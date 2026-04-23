@@ -85,9 +85,14 @@ const projetosData: ProjectDetail[] = [
     ],
     actions: [
       {
-        label: 'Falar sobre o projeto',
-        type: 'scroll',
-        href: 'contact',
+        label: 'Ver funcionando',
+        type: 'link',
+        href: 'https://luizgsch.github.io/E-commerce-AVX/',
+      },
+      {
+        label: 'Ver no GitHub',
+        type: 'link',
+        href: 'https://github.com/Luizgsch/E-commerce-AVX',
       },
     ],
   },
