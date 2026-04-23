@@ -89,8 +89,15 @@ const serviceCategories: ServiceCategory[] = [
 ];
 
 const slideCount = serviceCategories.length;
-const SLIDE_RATIO = 0.82;
-const SLIDE_GAP_PX = 14;
+
+/** Mais área útil do card em telas estreitas; prévia lateral em telas largas. */
+function slideRatioForViewportWidth(vw: number): number {
+  if (vw < 360) return 0.94;
+  if (vw < 480) return 0.9;
+  if (vw < 640) return 0.86;
+  if (vw < 900) return 0.84;
+  return 0.82;
+}
 
 export const Servicos = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -103,9 +110,11 @@ export const Servicos = () => {
     if (!el) return;
     const vw = el.clientWidth;
     if (vw < 1) return;
-    const w = vw * SLIDE_RATIO;
+    const ratio = slideRatioForViewportWidth(vw);
+    const w = Math.round(vw * ratio * 100) / 100;
+    const pad = Math.round(((vw - w) / 2) * 100) / 100;
     setSlideW(w);
-    setSidePad(Math.max(0, (vw - w) / 2));
+    setSidePad(Math.max(0, pad));
   }, []);
 
   useLayoutEffect(() => {
@@ -117,8 +126,9 @@ export const Servicos = () => {
     return () => ro.disconnect();
   }, [measure]);
 
-  const stepPx = slideW > 0 ? slideW + SLIDE_GAP_PX : 0;
-  const translateX = activeIndex * stepPx;
+  /* Deve coincidir com o espaçamento real entre slides (ex.: gap no flex). Sem gap → só slideW. */
+  const translateX =
+    slideW > 0 ? Math.round(activeIndex * slideW * 100) / 100 : 0;
 
   const goPrev = useCallback(() => {
     setActiveIndex((i) => (i - 1 + slideCount) % slideCount);
