@@ -1,6 +1,7 @@
 import { Header } from './sections/Header';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
+import { Servicos } from './sections/Servicos';
 import { Projetos } from './sections/Projetos';
 import { Contact } from './sections/Contact';
 import { PaletteSwitcher } from './components/common/PaletteSwitcher';
@@ -13,6 +14,7 @@ function App() {
       <Hero />
       <About />
       <Projetos />
+      <Servicos />
       <Contact />
       <PaletteSwitcher />
     </div>

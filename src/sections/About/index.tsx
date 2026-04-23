@@ -1,25 +1,113 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import './styles.css';
-import react from '/home/luiz/Documentos/Portfolio/src/assets/react.png';
-import typescript from '/home/luiz/Documentos/Portfolio/src/assets/typescript.png';
-import java from '/home/luiz/Documentos/Portfolio/src/assets/java.png';
-import sql from '/home/luiz/Documentos/Portfolio/src/assets/sql.png';
-import springboot from '/home/luiz/Documentos/Portfolio/src/assets/springboot.png';
-import docker from '/home/luiz/Documentos/Portfolio/src/assets/docker.png';
-import git from '/home/luiz/Documentos/Portfolio/src/assets/git.png';
-import kanbam from '/home/luiz/Documentos/Portfolio/src/assets/kanbam.png';
+import { SkillDetailModal } from './SkillDetailModal';
+import react from '../../assets/react.png';
+import typescript from '../../assets/typescript.png';
+import java from '../../assets/java.png';
+import sql from '../../assets/sql.png';
+import springboot from '../../assets/springboot.png';
+import docker from '../../assets/docker.png';
+import git from '../../assets/git.png';
+import kanbam from '../../assets/kanbam.png';
+
+type BentoSkill = {
+  name: string;
+  img: string;
+  type: 'large' | 'medium' | 'small';
+  desc?: string;
+  what: string;
+  daily: string;
+};
 
 export const About = () => {
-  const bentoSkills = [
-    { name: 'React', desc: 'Criação de interfaces dinâmicas, componentes altamente reutilizáveis e gerenciamento de estados.', img: react, type: 'large' },
-    { name: 'TypeScript', img: typescript, type: 'medium' },
-    { name: 'SQL', img: sql, type: 'small' },
-    { name: 'Spring Boot', desc: 'Construção de APIs seguras e escaláveis utilizando arquitetura limpa.', img: springboot, type: 'large' },
-    { name: 'Docker', img: docker, type: 'small' },
-    { name: 'Git', img: git, type: 'small' },
-    { name: 'Kanbam', img: kanbam, type: 'small' },
-    { name: 'Java', img: java, type: 'medium' }
+  const bentoSkills: BentoSkill[] = [
+    {
+      name: 'React',
+      desc: 'Criação de interfaces dinâmicas, componentes altamente reutilizáveis e gerenciamento de estados.',
+      img: react,
+      type: 'large',
+      what:
+        'React é uma biblioteca JavaScript para construir interfaces a partir de componentes reutilizáveis, com estado reativo e um ecossistema maduro para SPA e integração com APIs.',
+      daily:
+        'No dia a dia uso para montar telas do portfólio e de projetos como Command Center e ONG: formulários, listagens, modais e consumo de endpoints REST, organizando código em componentes e hooks para manter tudo legível.',
+    },
+    {
+      name: 'TypeScript',
+      img: typescript,
+      type: 'medium',
+      what:
+        'TypeScript é JavaScript com tipagem estática opcional: ajuda a documentar contratos de dados e a pegar erros ainda no editor, antes de rodar o app.',
+      daily:
+        'Tipagem de props, respostas de API e modelos compartilhados entre front e contratos OpenAPI; isso reduz retrabalho em refatorações e facilita revisão de código em equipe.',
+    },
+    {
+      name: 'SQL',
+      img: sql,
+      type: 'small',
+      what:
+        'SQL é a linguagem padrão para consultar e manipular dados em bancos relacionais (PostgreSQL, MySQL, etc.), com foco em integridade e consultas declarativas.',
+      daily:
+        'Modelagem de tabelas, chaves e índices; escrita de queries em serviços backend e validação de regras junto ao ORM ou JDBC; migrations quando o esquema evolui com o produto.',
+    },
+    {
+      name: 'Spring Boot',
+      desc: 'Construção de APIs seguras e escaláveis utilizando arquitetura limpa.',
+      img: springboot,
+      type: 'large',
+      what:
+        'Spring Boot é um framework Java que acelera APIs REST, segurança, persistência e configuração por convenção, muito usado em backends corporativos.',
+      daily:
+        'Controllers REST, serviços de domínio, integração com banco via JPA ou JDBC, validação de payloads e documentação Swagger — padrão que usei no módulo de usuários e agendamento de tarefas.',
+    },
+    {
+      name: 'Docker',
+      img: docker,
+      type: 'small',
+      what:
+        'Docker empacota aplicações em containers com dependências isoladas, aproximando o ambiente de desenvolvimento do de produção.',
+      daily:
+        'Dockerfile para subir API e front localmente, alinhar versões de Node/Java com o time e preparar builds reproduzíveis em pipelines ou deploy em nuvem.',
+    },
+    {
+      name: 'Git',
+      img: git,
+      type: 'small',
+      what:
+        'Git é o sistema de controle de versão distribuído mais usado no mercado: branches, merges e histórico confiável do código.',
+      daily:
+        'Commits atômicos com mensagens claras, branches por feature, pull requests no GitHub e resolução de conflitos — fluxo diário em todo projeto versionado.',
+    },
+    {
+      name: 'Kanban',
+      img: kanbam,
+      type: 'small',
+      what:
+        'Kanban é um método visual de fluxo de trabalho (a fazer, em progresso, concluído) que limita trabalho em andamento e deixa gargalos explícitos.',
+      daily:
+        'Organizo backlog e entregas em quadros digitais durante Tech Lead e projetos acadêmicos: priorização, WIP e transparência com stakeholders.',
+    },
+    {
+      name: 'Java',
+      img: java,
+      type: 'medium',
+      what:
+        'Java é uma linguagem orientada a objetos, madura e performática, base de ecossistemas como Spring em serviços backend de grande escala.',
+      daily:
+        'Implementação de regras de negócio, DTOs, camadas de serviço e integração com banco e filas; linguagem principal nos backends que construo com Spring Boot.',
+    },
   ];
+
+  const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
+
+  const activeSkill =
+    expandedSkill !== null
+      ? bentoSkills.find((s) => s.name === expandedSkill) ?? null
+      : null;
+
+  const toggleSkill = (name: string) => {
+    setExpandedSkill((prev) => (prev === name ? null : name));
+  };
 
   const highlights = [
     "5º Lugar na Olimpíada Brasileira de Robótica",
@@ -74,26 +162,35 @@ export const About = () => {
 
             <div className="about-skills-column">
               <h3 className="skills-subtitle">Hard Skills</h3>
+              <p className="skills-hint">Clique em uma tecnologia para ver detalhes.</p>
 
               <div className="bento-grid">
                 {bentoSkills.map((skill, index) => (
-                  <motion.div
+                  <motion.button
+                    type="button"
                     key={skill.name}
-                    className={`bento-card card ${skill.type}`}
+                    className={`bento-card card ${skill.type} ${expandedSkill === skill.name ? 'is-active' : ''}`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
+                    onClick={() => toggleSkill(skill.name)}
+                    aria-expanded={expandedSkill === skill.name}
+                    aria-controls={
+                      expandedSkill === skill.name
+                        ? 'skill-detail-dialog'
+                        : undefined
+                    }
                   >
                     <div className="bento-icon-wrapper">
-                      <img src={skill.img} alt={skill.name} className="bento-icon" />
+                      <img src={skill.img} alt="" className="bento-icon" />
                     </div>
 
                     <div className="bento-content">
                       <span className="bento-name">{skill.name}</span>
                       {skill.desc && <p className="bento-desc">{skill.desc}</p>}
                     </div>
-                  </motion.div>
+                  </motion.button>
                 ))}
               </div>
 
@@ -108,6 +205,11 @@ export const About = () => {
 
       {/* Elemento Decorativo */}
       <div className="about-decoration" />
+
+      <SkillDetailModal
+        skill={activeSkill}
+        onClose={() => setExpandedSkill(null)}
+      />
     </section>
   );
 };

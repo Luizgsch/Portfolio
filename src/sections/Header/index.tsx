@@ -18,8 +18,9 @@ export const Header = () => {
 
   // Lista de links de navegação para facilitar a manutenção e evitar repetição
   const navLinks = [
-    { name: 'Projetos', href: '#works' },
     { name: 'Sobre mim', href: '#about' },
+    { name: 'Projetos', href: '#works' },
+    { name: 'Serviços', href: '#services' },
     { name: 'Contato', href: '#contact' },
   ];
 

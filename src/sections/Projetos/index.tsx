@@ -10,6 +10,7 @@ import jornadaPdf from '../../assets/jornada1.pdf';
 import manuais from '../../assets/Manuais.png';
 import projeto from '../../assets/Projeto_tecnico.png';
 import manuais1 from '../../assets/Manuais1.png';
+import avx from '../../assets/AVX.png';
 import {
   ProjectDetailModal,
   type ProjectDetail,
@@ -53,33 +54,76 @@ const projetosData: ProjectDetail[] = [
     ],
   },
   {
-    id: 1,
-    category: 'Arquitetura de Software',
-    title: 'Agendador de Tarefas',
+    id: 5,
+    category: 'Showcase digital',
+    title: 'AVX Digital Showcase & Lead Engine',
     description:
-      'API REST com Java/Spring Boot. Módulo completo de usuários, autenticação JWT, integração SQL e documentação Swagger. Foco em arquitetura limpa e escalabilidade.',
-    image: swagger1,
+      'Canal digital de alto impacto para mobilidade urbana de luxo em Curitiba: landing minimalista, catálogo dinâmico, configurador de cores, reserva com validação e Server Actions, WhatsApp com mensagem por modelo e stack de conversão (Meta Pixel, GTM, Google Ads API). Next.js 14/15, Tailwind CSS v4 e Framer Motion na Vercel.',
+    image: avx,
     tabs: [
       {
-        id: 'visao',
-        label: 'Visão geral',
-        image: swagger1,
+        id: 'contexto',
+        label: 'Contexto',
+        image: avx,
         body:
-          'API REST desenvolvida em Java com Spring Boot para cadastro e agendamento de tarefas vinculadas a usuários. O módulo cobre persistência em SQL, regras de negócio claras e endpoints pensados para evoluir com novos recursos sem acoplamento excessivo.\n\nAutenticação JWT, validação de entrada e separação em camadas facilitam manutenção e testes. O objetivo foi demonstrar backend profissional, legível e preparado para integração com outros sistemas.',
+          'O projeto nasce da ausência de um canal digital de alto impacto que transforme o desejo visual em visitas ao showroom físico, somada à necessidade de presença otimizada no ecossistema Google (Maps e Busca).\n\nO público-alvo inclui o proprietário, com foco em gestão de leads, e os clientes finais interessados em mobilidade urbana de luxo em Curitiba. A proposta é unir experiência de marca, catálogo de modelos e funil de reserva até o WhatsApp, com rastreamento que sustenta gestão de tráfego e mensalidade.',
       },
       {
-        id: 'docs',
-        label: 'Documentação',
-        image: swagger2,
+        id: 'produto',
+        label: 'Produto & stack',
+        image: avx,
         body:
-          'A API é documentada com Swagger/OpenAPI, permitindo explorar rotas, payloads e respostas diretamente no navegador. Isso reduz atrito para quem consome o serviço e serve como contrato vivo entre backend e clientes.\n\nA documentação acompanha o código e ajuda a manter consistência de DTOs, códigos HTTP e exemplos de uso ao longo do tempo.',
+          'Funcionalidades essenciais: landing page ultra-minimalista (luxo UI/UX); catálogo dinâmico de modelos; configurador de cores visual; formulário de reserva com validação e Server Actions. Integrações: API do WhatsApp com redirecionamento e mensagem dinâmica conforme o modelo selecionado; setup de conversão com Pixel do Meta, Google Tag Manager e API de Conversão do Google Ads.\n\nO nível de complexidade é majoritariamente médio (M), pelo polimento visual com Framer Motion e pela estratégia de rastreamento de dados — o que fundamenta a mensalidade.\n\nStack: Next.js 14/15, Tailwind CSS v4, Framer Motion e TypeScript. Ambiente de produção na Vercel (Edge Functions e integração nativa com Next.js). Navegadores: versões atuais de Chrome, Safari, Edge e Firefox (padrão Contract Killer).',
+      },
+      {
+        id: 'entrega',
+        label: 'Entrega & investimento',
+        image: avx,
+        body:
+          'Inputs do cliente: fotos em alta resolução (de preferência PNG sem fundo), vídeos curtos de lifestyle, acessos de administrador ao Perfil da Empresa no Google (Maps) e ao Gerenciador de Anúncios. Padrão de prazo para entrega de materiais: 5 dias úteis, para não travar o cronograma de desenvolvimento.\n\nCronograma: Fase 1 — UI/UX e frontend (landing funcional e responsiva, 5–7 dias úteis). Fase 2 — integrações e GMN (Maps, SEO local, setup de anúncios, 3–5 dias úteis). Fase 3 — go-live e início da gestão de tráfego.\n\nFora do escopo: produção ou edição de vídeos complexos (o cliente envia brutos); criação diária de posts no feed do Instagram (foco em anúncios e GMN); suporte a computadores ou e-mails da loja.\n\nValor sugerido de setup: R$ 3.500 a R$ 5.500. Recorrência sugerida: R$ 1.200 a R$ 2.000/mês (gestão de anúncios, manutenção e GMN). Condições: 50% de entrada para iniciar o desenvolvimento e 50% na entrega do site, antes de iniciar o tráfego pago.',
       },
     ],
     actions: [
       {
+        label: 'Falar sobre o projeto',
+        type: 'scroll',
+        href: 'contact',
+      },
+    ],
+  },
+  {
+    id: 1,
+    category: 'Solução Corporativa',
+    title: 'Sistema Command Center',
+    description:
+      'Software para Command Center que digitaliza processos de RH. Rastreamento de vagas e candidatos, gestão de manuais e uniformes, com gráficos e dashboards visando a organização empresarial.',
+    image: manuais,
+    tabs: [
+      {
+        id: 'solucao',
+        label: 'Solução',
+        image: manuais,
+        body:
+          'Sistema web para Command Center que centraliza processos de RH: vagas, candidatos, manuais e uniformes, com visão por painéis e indicadores. A proposta é reduzir planilhas paralelas e dar uma fonte única de informação para o time operacional.\n\nFluxos foram pensados para uso recorrente, com ênfase em clareza de telas e consistência de dados entre módulos.',
+      },
+      {
+        id: 'stack',
+        label: 'Stack',
+        image: manuais1,
+        body:
+          'Interface construída em React, com organização de componentes e estado adequados para formulários, listagens e gráficos. O deploy em GitHub Pages viabiliza demonstração pública do protótipo e evolução contínua via repositório aberto.\n\nO repositório documenta como executar o projeto localmente e a estrutura principal de pastas para novas contribuições.',
+      },
+    ],
+    actions: [
+      {
+        label: 'Acessar sistema',
+        type: 'link',
+        href: 'https://luizgsch.github.io/Sistema_Jornada/',
+      },
+      {
         label: 'Ver no GitHub',
         type: 'link',
-        href: 'https://github.com/Luizgsch/usuario',
+        href: 'https://github.com/Luizgsch/Sistema_Jornada',
       },
     ],
   },
@@ -116,6 +160,37 @@ const projetosData: ProjectDetail[] = [
   },
   {
     id: 3,
+    category: 'Arquitetura de Software',
+    title: 'Agendador de Tarefas',
+    description:
+      'API REST com Java/Spring Boot. Módulo completo de usuários, autenticação JWT, integração SQL e documentação Swagger. Foco em arquitetura limpa e escalabilidade.',
+    image: swagger1,
+    tabs: [
+      {
+        id: 'visao',
+        label: 'Visão geral',
+        image: swagger1,
+        body:
+          'API REST desenvolvida em Java com Spring Boot para cadastro e agendamento de tarefas vinculadas a usuários. O módulo cobre persistência em SQL, regras de negócio claras e endpoints pensados para evoluir com novos recursos sem acoplamento excessivo.\n\nAutenticação JWT, validação de entrada e separação em camadas facilitam manutenção e testes. O objetivo foi demonstrar backend profissional, legível e preparado para integração com outros sistemas.',
+      },
+      {
+        id: 'docs',
+        label: 'Documentação',
+        image: swagger2,
+        body:
+          'A API é documentada com Swagger/OpenAPI, permitindo explorar rotas, payloads e respostas diretamente no navegador. Isso reduz atrito para quem consome o serviço e serve como contrato vivo entre backend e clientes.\n\nA documentação acompanha o código e ajuda a manter consistência de DTOs, códigos HTTP e exemplos de uso ao longo do tempo.',
+      },
+    ],
+    actions: [
+      {
+        label: 'Ver no GitHub',
+        type: 'link',
+        href: 'https://github.com/Luizgsch/usuario',
+      },
+    ],
+  },
+  {
+    id: 4,
     category: 'Gestão de Projetos',
     title: 'Manual de Materiais',
     description:
@@ -142,42 +217,6 @@ const projetosData: ProjectDetail[] = [
         label: 'Baixar PDF técnico',
         type: 'download',
         href: jornadaPdf,
-      },
-    ],
-  },
-  {
-    id: 4,
-    category: 'Solução Corporativa',
-    title: 'Sistema Command Center',
-    description:
-      'Software para Command Center que digitaliza processos de RH. Rastreamento de vagas e candidatos, gestão de manuais e uniformes, com gráficos e dashboards visando a organização empresarial.',
-    image: manuais,
-    tabs: [
-      {
-        id: 'solucao',
-        label: 'Solução',
-        image: manuais,
-        body:
-          'Sistema web para Command Center que centraliza processos de RH: vagas, candidatos, manuais e uniformes, com visão por painéis e indicadores. A proposta é reduzir planilhas paralelas e dar uma fonte única de informação para o time operacional.\n\nFluxos foram pensados para uso recorrente, com ênfase em clareza de telas e consistência de dados entre módulos.',
-      },
-      {
-        id: 'stack',
-        label: 'Stack',
-        image: manuais1,
-        body:
-          'Interface construída em React, com organização de componentes e estado adequados para formulários, listagens e gráficos. O deploy em GitHub Pages viabiliza demonstração pública do protótipo e evolução contínua via repositório aberto.\n\nO repositório documenta como executar o projeto localmente e a estrutura principal de pastas para novas contribuições.',
-      },
-    ],
-    actions: [
-      {
-        label: 'Acessar sistema',
-        type: 'link',
-        href: 'https://luizgsch.github.io/Sistema_Jornada/',
-      },
-      {
-        label: 'Ver no GitHub',
-        type: 'link',
-        href: 'https://github.com/Luizgsch/Sistema_Jornada',
       },
     ],
   },
