@@ -50,7 +50,12 @@ export const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p className="contact-hint">E-mail</p>
-            <a href="mailto:luizgsch1@gmail.com" className="contact-email-link">
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=luizgsch1@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-email-link"
+            >
               luizgsch1@gmail.com
               <span className="link-underline" />
             </a>
