@@ -9,7 +9,7 @@ import sql from '../../assets/sql.png';
 import springboot from '../../assets/springboot.png';
 import docker from '../../assets/docker.png';
 import git from '../../assets/git.png';
-import kanbam from '../../assets/kanbam.png';
+import nodejs from '../../assets/Node.js.png';
 
 type BentoSkill = {
   name: string;
@@ -79,13 +79,13 @@ export const About = () => {
         'Commits atômicos com mensagens claras, branches por feature, pull requests no GitHub e resolução de conflitos — fluxo diário em todo projeto versionado.',
     },
     {
-      name: 'Kanban',
-      img: kanbam,
+      name: 'Node.js',
+      img: nodejs,
       type: 'small',
       what:
-        'Kanban é um método visual de fluxo de trabalho (a fazer, em progresso, concluído) que limita trabalho em andamento e deixa gargalos explícitos.',
+        'Node.js é um ambiente de execução JavaScript voltado a aplicações de servidor, APIs e ferramentas de desenvolvimento, com arquitetura assíncrona e orientada a eventos.',
       daily:
-        'Organizo backlog e entregas em quadros digitais durante Tech Lead e projetos acadêmicos: priorização, WIP e transparência com stakeholders.',
+        'Uso Node.js para desenvolver APIs REST, integrar bancos de dados, automatizar tarefas e compartilhar conhecimentos de TypeScript entre frontend e backend.',
     },
     {
       name: 'Java',

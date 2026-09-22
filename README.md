@@ -89,7 +89,7 @@ npm run deploy
 
 ## 📫 Contato
 
-* Email: [Luizgsch1@gmail.com](mailto:Luizgsch1@gmail.com)
+* Email: [luizgsch1@gmail.com](mailto:luizgsch1@gmail.com)
 * LinkedIn: https://linkedin.com/in/luizschreiner
 * GitHub: https://github.com/Luizgsch
 
